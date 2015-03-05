@@ -1,27 +1,29 @@
 traverse("birds");
 
 function traverse(selector) {
-    traverseNode(document, '');
-    function traverseNode(node, spacing) {
+    traverseNode(document, '', false);
+
+    function traverseNode(node, spacing, isChildOfFoundedElement) {
         spacing = spacing || '  ';
 
-        if(node.nodeType === document.ELEMENT_NODE && node.className.indexOf(selector) != -1) {
-
-            var nodeID = node.id;
-
-            var output = spacing + node.nodeName.toLowerCase() + ": ";
-            if (nodeID != null && nodeID.indexOf(selector) != -1) {
-                output += " id=\"" + nodeID + "\"";
+        if(isChildOfFoundedElement == false){
+            if(node.className && node.className.indexOf(selector) != -1){
+                isChildOfFoundedElement = true;
             }
-            output += " class=\"" + node.className + "\"";
-
-            console.log(output);
+        }
+        else{
+            if(node.id){
+                console.log(spacing + node.nodeName.toLowerCase() + ": id=\"" + node.id + "\"  class=\"" + node.className + "\"");
+            }
+            else{
+                console.log(spacing + node.nodeName.toLowerCase() + ": class=\"" + node.className + "\"");
+            }
         }
 
         for (var i = 0, len = node.childNodes.length; i < len; i += 1) {
             var child = node.childNodes[i];
             if (child.nodeType === document.ELEMENT_NODE) {
-                traverseNode(child, spacing + '  ');
+                traverseNode(child, spacing + '  ', isChildOfFoundedElement);
             }
         }
     }
