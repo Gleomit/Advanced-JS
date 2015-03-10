@@ -10,10 +10,10 @@ function square(x) {
     return x * x;
 }
 
-function compose(f, g){
-    return function(num){
-        return g(num) - f(num);
-    }
-}
+var compose = function(f, g) {
+    return function() {
+        return f.call(this, g.apply(this, arguments));
+    };
+};
 
-console.log(compose(addOne, square)(5));
+console.log(compose(addOne, add)(5, 15));

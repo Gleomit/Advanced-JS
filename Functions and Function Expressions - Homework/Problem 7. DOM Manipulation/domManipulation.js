@@ -1,4 +1,4 @@
-function domModule(){
+var domModule = (function domModule(){
     function appendChild(element, child){
         var elementType = typeof element;
         var childType = typeof child;
@@ -10,8 +10,7 @@ function domModule(){
             for(i; i <  foundElements.length; i += 1 ){
                 foundElements[i].appendChild(element);
             }
-        }
-        else{
+        } else{
             child.appendChild(element);
         }
     }
@@ -32,21 +31,18 @@ function domModule(){
                         childsFound[j].parentNode.removeChild(childsFound[j]);
                     }*/
                 }
-            }
-            else{
+            } else{
                 for(i; i < selectorElements.length; i += 1){
                     selectorElements[i].removeChild(child);
                 }
             }
-        }
-        else{
+        } else{
             if(childType === "string"){
                 var elementsFound = element.querySelectorAll(child);
                 for(node in elementsFound){
                     element.removeChild(node);
                 }
-            }
-            else{
+            } else{
                 element.removeChild(child);
             }
         }
@@ -60,8 +56,7 @@ function domModule(){
             for(i; i < elementsFound.length; i += 1){
                 elementsFound[i].addEventListener(eventType, eventHandler);
             }
-        }
-        else{
+        } else{
             element.addEventListener(eventType, eventHandler);
         }
     }
@@ -76,9 +71,7 @@ function domModule(){
         removeChild: removeChild,
         appendChild: appendChild
     }
-}
-
-var domModule = new domModule();
+}());
 
 var liElement = document.createElement("li");
 // Appends a list item to ul.birds-list

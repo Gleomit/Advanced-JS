@@ -10,12 +10,10 @@ function traverse(selector) {
             if(node.className && node.className.indexOf(selector) != -1){
                 isChildOfFoundedElement = true;
             }
-        }
-        else{
+        } else{
             if(node.id){
                 console.log(spacing + node.nodeName.toLowerCase() + ": id=\"" + node.id + "\"  class=\"" + node.className + "\"");
-            }
-            else{
+            } else{
                 console.log(spacing + node.nodeName.toLowerCase() + ": class=\"" + node.className + "\"");
             }
         }
