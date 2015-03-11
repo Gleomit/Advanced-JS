@@ -4,15 +4,17 @@ Array.prototype.flatten = function doFlattening(){
     var i = 0;
 
     while(hasArray == true){
-
         hasArray = false;
+        
         for(i = 0; i < newArr.length; i += 1){
             if(Array.isArray(newArr[i]) == true){
                 hasArray = true;
             }
         }
+        
         newArr = [].concat.apply([], newArr);
     }
+    
     return newArr;
 };
 

@@ -61,6 +61,7 @@ String.prototype.right = function right(count){
 
 String.prototype.padLeft = function padLeft(count, character){
     var paddingCharacter = " ";
+    
     if(character){
         paddingCharacter = character;
     }
@@ -70,6 +71,7 @@ String.prototype.padLeft = function padLeft(count, character){
 
 String.prototype.padRight = function padRight(count, character){
     var paddingCharacter = " ";
+    
     if(character){
         paddingCharacter = character;
     }
