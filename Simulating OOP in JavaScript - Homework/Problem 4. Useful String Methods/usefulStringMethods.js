@@ -1,93 +1,100 @@
 String.prototype.startsWith = function startsWith (substring) {
-    if(substring.length < this.length){
-        var i = 0;
-        var result = true;
-
-        for(i; i < substring.length; i += 1) {
-            if(this.charAt(i) != substring.charAt(i)){
-                result = false;
-                break;
-            }
+    if(typeof substring === "string") {
+        if (substring.length < this.length) {
+            return (this.substring(0, substring.length) === substring);
+        } else {
+            return false;
         }
-
-        return result;
     } else{
-        return false;
+        throw new Error("The specified parameter is not a string.");
     }
 };
 
 String.prototype.endsWith = function endsWith(substring){
-    if(substring.length < this.length){
-        var i = this.length - substring.length;
-        if(this.substring(i) === substring){
-            return true;
-        }else{
+    if(typeof substring === "string") {
+        if (substring.length < this.length) {
+            return (this.substring(this.length - substring.length) === substring);
+        } else {
             return false;
         }
     } else{
-        return false;
+        throw new Error("The specified parameter is not a string.");
     }
 };
 
 String.prototype.left = function left(count){
-    if(count > this.length){
-        return this.toString();
-    } else{
-        var i = 0;
-        var result = "";
-
-        for(i; i < count; i += 1){
-            result += this.charAt(i);
+    if(typeof count === "number") {
+        if (count > this.length) {
+            return this.toString();
+        } else {
+            return this.substring(0, count);
         }
-
-        return result;
+    } else{
+        throw new Error("The specified parameter is not a number.");
     }
 };
 
 String.prototype.right = function right(count){
-    if(count > this.length){
-        return this.toString();
-    } else{
-        var i = this.length - count;
-        var result = "";
-
-        for(i; i < this.length; i += 1){
-            result += this.charAt(i);
+    if(typeof count === "number") {
+        if (count > this.length) {
+            return this.toString();
+        } else {
+            return this.substring(this.length - count);
         }
-
-        return result;
+    } else{
+        throw new Error("The specified parameter is not a number.");
     }
 };
 
 String.prototype.padLeft = function padLeft(count, character){
-    var paddingCharacter = " ";
-    
-    if(character){
-        paddingCharacter = character;
-    }
+    if(typeof count === "number") {
+        if (count > this.length) {
+            var paddingCharacter = " ";
 
-    return paddingCharacter.repeat(count) + this.toString();
+            if (character) {
+                paddingCharacter = character;
+            }
+
+            return paddingCharacter.repeat(count - this.length) + this.toString();
+        } else {
+            return this.toString();
+        }
+    }  else{
+        throw new Error("The specified parameter is not a number.");
+    }
 };
 
 String.prototype.padRight = function padRight(count, character){
-    var paddingCharacter = " ";
-    
-    if(character){
-        paddingCharacter = character;
-    }
+    if(typeof count === "number") {
+        if (count > this.length) {
+            var paddingCharacter = " ";
 
-    return this.toString() + paddingCharacter.repeat(count);
+            if (character) {
+                paddingCharacter = character;
+            }
+
+            return this.toString() + paddingCharacter.repeat(count - this.length);
+        } else {
+            return this.toString();
+        }
+    } else{
+        throw new Error("The specified parameter is not a number.");
+    }
 };
 
 String.prototype.repeat = function repeat(count){
-    var result = "";
-    var i = 0;
+    if(typeof count === "number") {
+        var result = "";
+        var i = 0;
 
-    for(i; i < count; i += 1){
-        result += this.toString();
+        for (i; i < count; i += 1) {
+            result += this.toString();
+        }
+
+        return result;
+    } else{
+        throw new Error("The specified parameter is not a number.");
     }
-
-    return result;
 };
 
 var example = "This is an example string used only for demonstration purposes.";
