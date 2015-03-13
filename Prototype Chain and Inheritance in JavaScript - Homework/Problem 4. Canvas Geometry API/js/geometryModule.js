@@ -1,4 +1,4 @@
-var GeometryModule = (function(){
+var GeometryModule = (function () {
     function calc2DDistance(vertexOne, vertexTwo) {
         if (vertexOne instanceof Vertex && vertexTwo instanceof Vertex) {
             return Math.sqrt(Math.pow(vertexOne.x - vertexTwo.x, 2) + Math.pow(vertexOne.y - vertexTwo.y, 2));
@@ -14,11 +14,11 @@ var GeometryModule = (function(){
         }
 
         Shape.prototype = {
-            get color(){
+            get color() {
                 return this._color;
             },
-            set color(val){
-                if(/(^#[0-9A-F]{6}$)|(^#[0-9A-F]{3}$)/i.test(val) == false) {
+            set color(val) {
+                if (/(^#[0-9A-F]{6}$)|(^#[0-9A-F]{3}$)/i.test(val) == false) {
                     throw new Error("Color must be valid hexadecimal string!");
                 }
 
@@ -26,9 +26,8 @@ var GeometryModule = (function(){
             }
         };
 
-        Shape.prototype.toString = function(){
-            var result = "X1: " + this.position.x + ", Y1: " + this.position.y + ", Color: "
-                + this.color;
+        Shape.prototype.toString = function () {
+            var result = "X1: " + this.position.x + ", Y1: " + this.position.y + ", Color: " + this.color;
             return result;
         };
 
@@ -46,8 +45,8 @@ var GeometryModule = (function(){
         Rectangle.prototype = Object.create(Shape.prototype);
         Rectangle.prototype.constructor = Rectangle;
 
-        Rectangle.prototype.toString = function(){
-            var result = "Rectangle - " + Shape.prototype.toString.call(this) + ", Width: " + this.width + ", Height: " + this.height;
+        Rectangle.prototype.toString = function () {
+            var result = "Rectangle - " + Shape.prototype.toString.call(this) + ", Width - " + this.width + ", Height - " + this.height;
             return result;
         };
 
@@ -76,6 +75,16 @@ var GeometryModule = (function(){
             return this._height;
         });
 
+        Rectangle.prototype.draw = function () {
+            var canvas = document.getElementById('canvas');
+            if (canvas.getContext) {
+                var ctx = canvas.getContext('2d');
+
+                ctx.fillStyle = this.color;
+                ctx.fillRect(this.position.x, this.position.y, this.width, this.height);
+            }
+        };
+
         return Rectangle;
     }());
 
@@ -83,7 +92,6 @@ var GeometryModule = (function(){
         function Triangle(a, b, c, color) {
             if (a instanceof Vertex && b instanceof Vertex && c instanceof Vertex) {
                 Shape.call(this, a, color);
-
                 this.b = b;
                 this.c = c;
 
@@ -100,10 +108,24 @@ var GeometryModule = (function(){
         Triangle.prototype = Object.create(Shape.prototype);
         Triangle.prototype.constructor = Triangle;
 
-        Triangle.prototype.toString = function(){
+        Triangle.prototype.toString = function () {
             var result = "Triangle - " + Shape.prototype.toString.call(this) + ", X2: "
-                + this.b.x + ", Y2: " + this.b.y + ", X3: " + this.c.x + ", Y3: " + this.c.y;
+                + this.b.x + "Y2: " + this.b.y + ", X3: " + this.c.x + ", Y3: " + this.c.y;
             return result;
+        };
+
+        Triangle.prototype.draw = function () {
+            var canvas = document.getElementById('canvas');
+            if (canvas.getContext) {
+                var ctx = canvas.getContext('2d');
+
+                ctx.fillStyle = this.color;
+                ctx.beginPath();
+                ctx.moveTo(this.position.x, this.position.y);
+                ctx.lineTo(this.b.x, this.b.y);
+                ctx.lineTo(this.c.x, this.c.y);
+                ctx.fill();
+            }
         };
 
         return Triangle;
@@ -118,22 +140,34 @@ var GeometryModule = (function(){
         Circle.prototype = Object.create(Shape.prototype);
         Circle.prototype.constructor = Circle;
 
-        Circle.prototype.toString = function(){
+        Circle.prototype.toString = function () {
             var result = "Circle - " + Shape.prototype.toString.call(this) + ", Radius: " + this.radius;
             return result;
         };
 
-        Circle.prototype.__defineSetter__("radius", function(val){
-            if(val < 0) {
+        Circle.prototype.__defineSetter__("radius", function (val) {
+            if (val < 0) {
                 throw new Error("Circle radius must be positive number.");
             }
 
             this._radius = val;
         });
 
-        Circle.prototype.__defineGetter__("radius", function(){
-            return this._radius;;
+        Circle.prototype.__defineGetter__("radius", function () {
+            return this._radius;
         });
+
+        Circle.prototype.draw = function () {
+            var canvas = document.getElementById('canvas');
+            if (canvas.getContext) {
+                var ctx = canvas.getContext('2d');
+
+                ctx.fillStyle = this.color;
+                ctx.beginPath();
+                ctx.arc(this.position.x, this.position.y, this.radius, 0, 2 * Math.PI);
+                ctx.fill();
+            }
+        };
 
         return Circle;
     }());
@@ -148,10 +182,25 @@ var GeometryModule = (function(){
         Line.prototype = Object.create(Shape.prototype);
         Line.prototype.constructor = Line;
 
-        Line.prototype.toString = function(){
+        Line.prototype.toString = function () {
             var result = "Line - " + Shape.prototype.toString.call(this) + " X2: "
                 + this.b.x + ", Y2: " + this.b.y;
             return result;
+        };
+
+        Line.prototype.draw = function () {
+            var canvas = document.getElementById('canvas');
+            if (canvas.getContext) {
+                var ctx = canvas.getContext('2d');
+
+                ctx.fillStyle = this.color;
+
+                ctx.beginPath();
+                ctx.moveTo(this.position.x, this.position.y);
+                ctx.lineTo(this.b.x, this.b.y);
+                ctx.closePath();
+                ctx.stroke();
+            }
         };
 
         return Line;
@@ -167,16 +216,31 @@ var GeometryModule = (function(){
         Segment.prototype = Object.create(Shape.prototype);
         Segment.prototype.constructor = Segment;
 
-        Segment.prototype.toString = function(){
-            var result = "Segment - " + Shape.prototype.toString.call(this) + " X2: "
+        Segment.prototype.toString = function () {
+            var result =  "Segment - " + Shape.prototype.toString.call(this) + " X2: "
                 + this.b.x + ", Y2: " + this.b.y;
             return result;
+        };
+
+        Segment.prototype.draw = function () {
+            var canvas = document.getElementById('canvas');
+            if (canvas.getContext) {
+                var ctx = canvas.getContext('2d');
+
+                ctx.fillStyle = this.color;
+
+                ctx.beginPath();
+                ctx.moveTo(this.position.x, this.position.y);
+                ctx.lineTo(this.b.x, this.b.y);
+                ctx.closePath();
+                ctx.stroke();
+            }
         };
 
         return Segment;
     }());
 
-    var Point = (function Point(){
+    var Point = (function Point() {
         function Point(position, color) {
             Shape.call(this, position, color);
         }
@@ -184,6 +248,16 @@ var GeometryModule = (function(){
         Point.prototype.toString = function () {
             var result = "Point - " + Shape.prototype.toString.call(this);
             return result;
+        };
+
+        Point.prototype.draw = function () {
+            var canvas = document.getElementById('canvas');
+            if (canvas.getContext) {
+                var ctx = canvas.getContext('2d');
+
+                ctx.fillStyle = this.color;
+                ctx.fillRect(this.position.x, this.position.y, 1, 1);
+            }
         };
 
         return Point;
@@ -216,7 +290,7 @@ var GeometryModule = (function(){
         return Vertex;
     })();
 
-    return{
+    return {
         Rectangle: Rectangle,
         Triangle: Triangle,
         Circle: Circle,
@@ -226,15 +300,3 @@ var GeometryModule = (function(){
         Vertex: Vertex
     }
 })();
-
-var shapes = [];
-
-shapes.push(new GeometryModule.Circle(new GeometryModule.Vertex(10, 0), 1, "#ffa"));
-shapes.push(new GeometryModule.Triangle(new GeometryModule.Vertex(10, 0),
-    new GeometryModule.Vertex(10, 10), new GeometryModule.Vertex(5, 5), "#ffb"));
-shapes.push(new GeometryModule.Rectangle(new GeometryModule.Vertex(0, 0), 10, 30, "#fffaaa"));
-shapes.push(new GeometryModule.Segment(new GeometryModule.Vertex(10, 0), new GeometryModule.Vertex(10, 10), "#fffeee"));
-shapes.push(new GeometryModule.Line(new GeometryModule.Vertex(10, 0), new GeometryModule.Vertex(10, 10), "#fffbbb"));
-shapes.push(new GeometryModule.Point(new GeometryModule.Vertex(10, 5), "#fffbbb"));
-
-console.log(shapes.join("\n"));

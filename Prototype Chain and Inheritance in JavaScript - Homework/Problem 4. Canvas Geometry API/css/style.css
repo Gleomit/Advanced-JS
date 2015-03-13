@@ -1,0 +1,44 @@
+form section{
+    padding-bottom: 10px;
+}
+
+form{
+    padding: 10px;
+}
+
+input[type="text"]{
+    width: 100px;
+}
+
+.shapeCreation, canvas{
+    display: inline-block;
+    vertical-align: top;
+
+    border: 1px solid #000;
+}
+
+.removeItems{
+    display: inline-block;
+    vertical-align: top;
+}
+
+.button{
+    text-align: center;
+    border: 2px solid #90cbf0;
+    background-color: #e1e8ed;
+    width: 20px;
+    margin-bottom: 5px;
+}
+
+.button:hover{
+    cursor: pointer;
+}
+
+#addItem{
+    width: 60px;
+}
+
+h1{
+    font-size: 400%;
+    margin: 0;
+}
