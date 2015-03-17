@@ -6,6 +6,14 @@ form{
     padding: 10px;
 }
 
+main{
+    margin-left: 20%;
+}
+
+textarea{
+    resize: none;
+}
+
 input[type="text"]{
     width: 100px;
 }
@@ -13,7 +21,6 @@ input[type="text"]{
 .shapeCreation, canvas{
     display: inline-block;
     vertical-align: top;
-
     border: 1px solid #000;
 }
 
@@ -22,16 +29,14 @@ input[type="text"]{
     vertical-align: top;
 }
 
-.button{
-    text-align: center;
-    border: 2px solid #90cbf0;
-    background-color: #e1e8ed;
-    width: 20px;
+button{
+    display: block;
     margin-bottom: 5px;
 }
 
-.button:hover{
-    cursor: pointer;
+#removeLastItem{
+    width: 26px;
+    height: 25px;
 }
 
 #addItem{

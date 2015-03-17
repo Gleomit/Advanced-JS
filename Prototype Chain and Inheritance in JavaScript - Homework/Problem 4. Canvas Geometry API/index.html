@@ -6,66 +6,68 @@
     <link rel="stylesheet" href="css/style.css"/>
 </head>
 <body>
-<h1>Canvas Geometry API</h1>
-<form method="get" class="shapeCreation">
-    <section>
-        <label for="positionX">X: </label>
-        <input type="text" id="positionX"/>
+<main>
+    <h1>Canvas Geometry API</h1>
+    <form method="get" class="shapeCreation">
+        <section>
+            <label for="positionX">X: </label>
+            <input type="text" id="positionX"/>
 
-        <label for="positionY">Y: </label>
-        <input type="text" id="positionY"/>
+            <label for="positionY">Y: </label>
+            <input type="text" id="positionY"/>
 
-        <label for="color">Color: </label>
-        <input type="color" id="color"/>
-    </section>
-    <section>
-        <label for="shape">Shape: </label>
-        <select id="shape">
-            <option value="Triangle" default>Triangle</option>
-            <option value="Rectangle">Rectangle</option>
-            <option value="Circle">Circle</option>
-            <option value="Line">Line</option>
-            <option value="Segment">Segment</option>
-            <option value="Point">Point</option>
-        </select>
-    </section>
-    <section id="x2y2">
-        <label for="x2">X2: </label>
-        <input type="text" id="x2"/>
-
-        <label for="y2">Y2: </label>
-        <input type="text" id="y2"/>
-    </section>
-    <section id="x3y3">
-        <label for="x3">X3: </label>
-        <input type="text" id="x3"/>
-
-        <label for="y3">Y3: </label>
-        <input type="text" id="y3"/>
-    </section>
-    <section id="rectangleInput">
-        <label for="width">Width: </label>
-        <input type="text" id="width"/>
-
-        <label for="height">Height: </label>
-        <input type="text" id="height"/>
-    </section>
-    <section id="circleInput">
-        <label for="radius">Radius: </label>
-        <input type="text" id="radius"/>
-    </section>
-    <section>
-        <textarea id="itemsInfo" cols="55" rows="10"></textarea>
-        <section class="removeItems">
-            <div class="button" id="moveUp">&uArr;</div>
-            <div class="button" id="moveDown">&dArr;</div>
-            <div class="button" id="removeLastItem">-</div>
+            <label for="color">Color: </label>
+            <input type="color" id="color"/>
         </section>
-    </section>
-    <div class="button" id="addItem">Add</div>
-</form>
+        <section>
+            <label for="shape">Shape: </label>
+            <select id="shape">
+                <option value="Triangle" default>Triangle</option>
+                <option value="Rectangle">Rectangle</option>
+                <option value="Circle">Circle</option>
+                <option value="Line">Line</option>
+                <option value="Segment">Segment</option>
+                <option value="Point">Point</option>
+            </select>
+        </section>
+        <section id="x2y2">
+            <label for="x2">X2: </label>
+            <input type="text" id="x2"/>
 
-<canvas id="canvas" width="400" height="320"></canvas>
+            <label for="y2">Y2: </label>
+            <input type="text" id="y2"/>
+        </section>
+        <section id="x3y3">
+            <label for="x3">X3: </label>
+            <input type="text" id="x3"/>
+
+            <label for="y3">Y3: </label>
+            <input type="text" id="y3"/>
+        </section>
+        <section id="rectangleInput">
+            <label for="width">Width: </label>
+            <input type="text" id="width"/>
+
+            <label for="height">Height: </label>
+            <input type="text" id="height"/>
+        </section>
+        <section id="circleInput">
+            <label for="radius">Radius: </label>
+            <input type="text" id="radius"/>
+        </section>
+        <section>
+            <textarea id="itemsInfo" cols="55" rows="10"></textarea>
+            <section class="removeItems">
+                <button type="button" id="moveUp">&uArr;</button>
+                <button type="button" id="moveDown">&dArr;</button>
+                <button type="button" id="removeLastItem">-</button>
+            </section>
+        </section>
+        <button type="button" id="addItem">Add</button>
+    </form>
+
+    <canvas id="canvas" width="400" height="320"></canvas>
+</main>
 <script type="text/javascript" src="js/geometryModule.js"></script>
 <script type="text/javascript" src="js/geometryAPI.js"></script>
 <script type="text/javascript" src="js/pageJs.js"></script>
