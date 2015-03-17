@@ -43,49 +43,94 @@ function addItem(){
     var currentShape = document.getElementById("shape").value;
     var selectedColor = document.getElementById("color").value;
 
-    var x1 = parseInt(document.getElementById("positionX").value);
-    var y1 = parseInt(document.getElementById("positionY").value);
+    if(checkForEmptyFields(document.getElementById("positionX").value,
+            document.getElementById("positionY").value) === true) {
+        var x1 = parseInt(document.getElementById("positionX").value);
+        var y1 = parseInt(document.getElementById("positionY").value);
 
-    switch(currentShape){
-        case "Triangle":
-            var x2 = parseInt(document.getElementById("x2").value);
-            var y2 = parseInt(document.getElementById("y2").value);
+        switch (currentShape) {
+            case "Triangle":
+                if(checkForEmptyFields(document.getElementById("x2").value,
+                        document.getElementById("y2").value, document.getElementById("x3").value,
+                        document.getElementById("y3").value) === true) {
+                    var x2 = parseInt(document.getElementById("x2").value);
+                    var y2 = parseInt(document.getElementById("y2").value);
 
-            var x3 = parseInt(document.getElementById("x3").value);
-            var y3 = parseInt(document.getElementById("y3").value);
+                    var x3 = parseInt(document.getElementById("x3").value);
+                    var y3 = parseInt(document.getElementById("y3").value);
 
-            GeometryAPI.addItem(currentShape, [x1, y1, x2, y2, x3, y3, selectedColor]);
-            break;
-        case "Circle":
-            var radius = parseInt(document.getElementById("radius").value);
+                    GeometryAPI.addItem(currentShape, [x1, y1, x2, y2, x3, y3, selectedColor]);
+                } else{
+                    alert("All input fields must be filled.");
+                }
+                break;
+            case "Circle":
+                if(checkForEmptyFields(document.getElementById("radius").value) === true) {
+                    var radius = parseInt(document.getElementById("radius").value);
 
-            GeometryAPI.addItem(currentShape, [x1, y1, radius, selectedColor]);
-            break;
-        case "Rectangle":
-            var width = parseInt(document.getElementById("width").value);
-            var height = parseInt(document.getElementById("height").value);
+                    GeometryAPI.addItem(currentShape, [x1, y1, radius, selectedColor]);
+                } else{
+                    alert("All input fields must be filled.");
+                }
+                break;
+            case "Rectangle":
+                if(checkForEmptyFields(document.getElementById("width").value,
+                        document.getElementById("height").value) === true) {
+                    var width = parseInt(document.getElementById("width").value);
+                    var height = parseInt(document.getElementById("height").value);
 
-            GeometryAPI.addItem(currentShape, [x1, y1, width, height, selectedColor]);
-            break;
-        case "Line":
-            var x2 = parseInt(document.getElementById("x2").value);
-            var y2 = parseInt(document.getElementById("y2").value);
+                    GeometryAPI.addItem(currentShape, [x1, y1, width, height, selectedColor]);
+                } else{
+                    alert("All input fields must be filled.");
+                }
+                break;
+            case "Line":
+                if(checkForEmptyFields(document.getElementById("x2").value,
+                        document.getElementById("y2").value) === true) {
+                    var x2 = parseInt(document.getElementById("x2").value);
+                    var y2 = parseInt(document.getElementById("y2").value);
 
-            GeometryAPI.addItem(currentShape, [x1, y1, x2, y2, selectedColor]);
-            break;
-        case "Point":
-            GeometryAPI.addItem(currentShape, [x1, y1, selectedColor]);
-            break;
-        case "Segment":
-            var x2 = parseInt(document.getElementById("x2").value);
-            var y2 = parseInt(document.getElementById("y2").value);
+                    GeometryAPI.addItem(currentShape, [x1, y1, x2, y2, selectedColor]);
+                } else{
+                    alert("All input fields must be filled.");
+                }
+                break;
+            case "Point":
+                GeometryAPI.addItem(currentShape, [x1, y1, selectedColor]);
+                break;
+            case "Segment":
+                if(checkForEmptyFields(document.getElementById("x2").value,
+                        document.getElementById("y2").value) === true) {
+                    var x2 = parseInt(document.getElementById("x2").value);
+                    var y2 = parseInt(document.getElementById("y2").value);
 
-            GeometryAPI.addItem(currentShape, [x1, y1, x2, y2, selectedColor]);
-            break;
+                    GeometryAPI.addItem(currentShape, [x1, y1, x2, y2, selectedColor]);
+                } else{
+                    alert("All input fields must be filled.");
+                }
+                break;
+        }
+    } else {
+        alert("All input fields must be filled.");
     }
 
     onChange();
 }
+
+function checkForEmptyFields(){
+    var result = true;
+    var i = 0;
+
+    for(i; i < arguments.length; i += 1){
+        if(arguments[i].trim().length === 0){
+            result = false;
+            break;
+        }
+    }
+
+    return result;
+}
+
 
 window.onload = function () {
     specialHtmlElements.push(document.getElementById("x2y2"));

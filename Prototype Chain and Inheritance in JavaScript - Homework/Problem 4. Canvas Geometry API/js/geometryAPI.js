@@ -1,10 +1,6 @@
 var GeometryAPI = (function() {
     var items = [];
 
-    //element reoder tracking variables
-    var isMovingDown = false;
-    var isMovingUp = false;
-
     var currentMovableElement = null;
 
     function addItem(shapeType, additionalInfo){

@@ -77,6 +77,7 @@ var GeometryModule = (function () {
 
         Rectangle.prototype.draw = function () {
             var canvas = document.getElementById('canvas');
+
             if (canvas.getContext) {
                 var ctx = canvas.getContext('2d');
 
@@ -92,6 +93,7 @@ var GeometryModule = (function () {
         function Triangle(a, b, c, color) {
             if (a instanceof Vertex && b instanceof Vertex && c instanceof Vertex) {
                 Shape.call(this, a, color);
+
                 this.b = b;
                 this.c = c;
 
@@ -116,6 +118,7 @@ var GeometryModule = (function () {
 
         Triangle.prototype.draw = function () {
             var canvas = document.getElementById('canvas');
+
             if (canvas.getContext) {
                 var ctx = canvas.getContext('2d');
 
@@ -159,6 +162,7 @@ var GeometryModule = (function () {
 
         Circle.prototype.draw = function () {
             var canvas = document.getElementById('canvas');
+
             if (canvas.getContext) {
                 var ctx = canvas.getContext('2d');
 
@@ -190,6 +194,7 @@ var GeometryModule = (function () {
 
         Line.prototype.draw = function () {
             var canvas = document.getElementById('canvas');
+
             if (canvas.getContext) {
                 var ctx = canvas.getContext('2d');
 
@@ -224,6 +229,7 @@ var GeometryModule = (function () {
 
         Segment.prototype.draw = function () {
             var canvas = document.getElementById('canvas');
+
             if (canvas.getContext) {
                 var ctx = canvas.getContext('2d');
 
@@ -252,6 +258,7 @@ var GeometryModule = (function () {
 
         Point.prototype.draw = function () {
             var canvas = document.getElementById('canvas');
+
             if (canvas.getContext) {
                 var ctx = canvas.getContext('2d');
 
