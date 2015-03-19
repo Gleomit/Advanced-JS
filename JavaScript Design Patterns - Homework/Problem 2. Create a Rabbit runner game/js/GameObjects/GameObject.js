@@ -57,6 +57,9 @@ var GameObject = (function(){
             }
 
             this._height = val;
+        },
+        draw: function(){
+            canvasContext.drawImage(this.image, this.x, this.y);
         }
     };
 

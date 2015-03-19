@@ -1,7 +1,7 @@
 var Enemy = (function(){
-    function Enemy(x, y, width, height, collidable){
-        GameObject.call(this, x, y, width, height, collidable);
-
+    function Enemy(x, y, width, height){
+        GameObject.call(this, x, y, width, height, true);
+        this.speed = 1.2;
         this.isAlive = true;
     }
 

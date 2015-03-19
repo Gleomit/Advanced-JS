@@ -1,4 +1,4 @@
-var todoListModule = (function() {
+var TodoListModule = (function() {
     var totalContainersCount = 0;
     var totalSectionsCount = 0;
     var totalItemsCount = 0;
