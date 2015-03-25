@@ -1,3 +1,10 @@
+function Person(firstName, lastName) {
+    this.firstName = firstName;
+    this.lastName = lastName;
+}
+
+var person = null;
+
 Person.prototype = {
     get firstName(){
         return this._firstName;
@@ -31,14 +38,9 @@ Person.prototype = {
             throw new Error("LastName must be string.");
         }
     }
-}
+};
 
-function Person(firstName, lastName) {
-    this.firstName = firstName;
-    this.lastName = lastName;
-}
-
-var person = new Person("Peter", "Jackson");
+person = new Person("Peter", "Jackson");
 
 console.log();
 

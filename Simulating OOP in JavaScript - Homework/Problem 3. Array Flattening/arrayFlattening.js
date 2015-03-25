@@ -1,3 +1,5 @@
+var array = null;
+
 Array.prototype.flatten = function doFlattening(){
     var newArr = this;
     var hasArray = true;
@@ -18,7 +20,7 @@ Array.prototype.flatten = function doFlattening(){
     return newArr;
 };
 
-var array = [1, 2, 3, 4];
+array = [1, 2, 3, 4];
 console.log(array.flatten());
 
 console.log();

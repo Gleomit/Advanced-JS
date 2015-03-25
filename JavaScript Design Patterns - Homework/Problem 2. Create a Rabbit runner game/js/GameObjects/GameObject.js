@@ -4,7 +4,7 @@ var GameObject = (function(){
         this.y = y;
         this.width = width;
         this.height = height;
-        this.collidable = collidable;
+        this.collidable = collidable || false;
     }
 
     GameObject.prototype = {

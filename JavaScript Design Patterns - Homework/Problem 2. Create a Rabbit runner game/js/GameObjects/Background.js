@@ -5,13 +5,13 @@ var Background = (function(){
 
         var temp = null;
 
-        for(i = 0;i < 5; i += 1){
-            var randomPositionX = Math.floor((Math.random() * 49) + 1);
+        for(i = 0;i < 3; i += 1){
+            var randomPositionX = Math.floor((Math.random() * 3) + 1);
             var randomPositionY = Math.floor((Math.random() * 3) + 0);
             var randomCloudImage = Math.floor((Math.random() * 4) + 1);
 
             temp = new GameObject(randomPositionX * TILE_SIZE, randomPositionY * TILE_SIZE, 1, 1, false);
-            temp.image = clouds[randomCloudImage];
+            temp.image = cloudSprites[randomCloudImage];
 
             tempClouds.push(temp);
         }
@@ -30,9 +30,9 @@ var Background = (function(){
     }
 
     Background.prototype = {
-        update: function(player){
-            if(player.isMoving === true){
-                this.move(player.velocityX * -1);
+        update: function(){
+            if(Player.isMoving === true){
+                this.move(Player.velocityX * -1);
             }
         },
         draw: function(){

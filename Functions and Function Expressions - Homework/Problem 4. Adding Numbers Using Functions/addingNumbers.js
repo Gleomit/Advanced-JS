@@ -16,5 +16,5 @@ function add(numOne) {
 var addTwo = add(2);
 console.log(+addTwo);
 
-var addTwo = add(2);
+addTwo = add(2);
 console.log(+addTwo(3)(5)(1)(7));

@@ -1,3 +1,10 @@
+var a = null;
+var b = null;
+var c = null;
+var wrong = null;
+var anotherWrong = null;
+var result = null;
+
 function Vector(dimensionsArray){
     this.dimensions = dimensionsArray;
     this.dimensionsCount = function (){
@@ -79,9 +86,9 @@ Vector.prototype.toString = function toString(){
     return this.dimensions;
 };
 
-var a = new Vector([1, 2, 3]);
-var b = new Vector([4, 5, 6]);
-var c = new Vector([1, 1, 1, 1, 1, 1, 1, 1, 1, 1]);
+a = new Vector([1, 2, 3]);
+b = new Vector([4, 5, 6]);
+c = new Vector([1, 1, 1, 1, 1, 1, 1, 1, 1, 1]);
 
 console.log(a.toString());
 console.log(c.toString());
@@ -89,40 +96,40 @@ console.log(c.toString());
 console.log();
 
 // The following throw errors
-var wrong = new Vector();
-var anotherWrong = new Vector([]);
+wrong = new Vector();
+anotherWrong = new Vector([]);
 
-var a = new Vector([1, 2, 3]);
-var b = new Vector([4, 5, 6]);
-var c = new Vector([1, 1, 1, 1, 1, 1, 1, 1, 1, 1]);
-var result = a.add(b);
+a = new Vector([1, 2, 3]);
+b = new Vector([4, 5, 6]);
+c = new Vector([1, 1, 1, 1, 1, 1, 1, 1, 1, 1]);
+result = a.add(b);
 console.log(result.toString());
 
 //a.add(c); // Error, uncomment it to see the result
 
 console.log();
 
-var a = new Vector([1, 2, 3]);
-var b = new Vector([4, 5, 6]);
-var c = new Vector([1, 1, 1, 1, 1, 1, 1, 1, 1, 1]);
-var result = a.subtract(b);
+a = new Vector([1, 2, 3]);
+b = new Vector([4, 5, 6]);
+c = new Vector([1, 1, 1, 1, 1, 1, 1, 1, 1, 1]);
+result = a.subtract(b);
 console.log(result.toString());
 
 console.log();
 
-var a = new Vector([1, 2, 3]);
-var b = new Vector([4, 5, 6]);
-var c = new Vector([1, 1, 1, 1, 1, 1, 1, 1, 1, 1]);
-var result = a.dot(b);
+a = new Vector([1, 2, 3]);
+b = new Vector([4, 5, 6]);
+c = new Vector([1, 1, 1, 1, 1, 1, 1, 1, 1, 1]);
+result = a.dot(b);
 console.log(result.toString());
 
 //a.dot(c); // Error, uncomment it to see the result
 
 console.log();
 
-var a = new Vector([1, 2, 3]);
-var b = new Vector([4, 5, 6]);
-var c = new Vector([1, 1, 1, 1, 1, 1, 1, 1, 1, 1]);
+a = new Vector([1, 2, 3]);
+b = new Vector([4, 5, 6]);
+c = new Vector([1, 1, 1, 1, 1, 1, 1, 1, 1, 1]);
 
 console.log(a.norm());
 console.log(b.norm());

@@ -5,13 +5,13 @@ function createImage(filePath){
 }
 
 function areColliding(objectOne, objectTwo) {
-    if (objectOne.x + objectOne.width >= objectTwo.x &&
+    return ((objectOne.x + objectOne.width >= objectTwo.x &&
         objectOne.x <= objectTwo.x + objectTwo.width &&
         objectOne.y + objectOne.height >= objectTwo.y &&
-        objectOne.y <= objectTwo.y + objectTwo.height){
-
-        return true;
-    } else{
-        return false;
-    }
+        objectOne.y <= objectTwo.y + objectTwo.height)
+    ||
+        (objectTwo.x + objectTwo.width >= objectOne.x &&
+        objectTwo.x <= objectOne.x + objectOne.width &&
+        objectTwo.y + objectTwo.height >= objectOne.y &&
+        objectTwo.y <= objectOne.y + objectOne.height));
 }

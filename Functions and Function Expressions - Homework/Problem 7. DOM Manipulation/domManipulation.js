@@ -74,6 +74,7 @@ var domModule = (function domModule(){
 }());
 
 var liElement = document.createElement("li");
+var elements = null;
 // Appends a list item to ul.birds-list
 domModule.appendChild(liElement, ".birds-list");
 
@@ -81,4 +82,4 @@ domModule.removeChild("ul.birds-list", "li:first-child");
 // Adds a click event to all bird list items
 domModule.addHandler("li.bird", 'click', function(){ alert("I'm a bird!") });
 // Retrives all elements of class "bird"
-var elements = domModule.retrieveElements(".bird");
+elements = domModule.retrieveElements(".bird");

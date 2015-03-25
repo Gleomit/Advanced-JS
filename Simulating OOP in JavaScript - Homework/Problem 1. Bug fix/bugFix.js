@@ -3,6 +3,8 @@ function Person(firstName, lastName) {
     this.lastName = lastName;
 }
 
+var peter = null;
+
 Person.prototype = {
     get firstName(){
         return this._firstName;
@@ -29,7 +31,7 @@ Person.prototype = {
     }
 };
 
-var peter = new Person("Peter", "Jackson");
+peter = new Person("Peter", "Jackson");
 
 console.log(peter.name);
 console.log(peter.firstName);

@@ -1,2 +1,2 @@
-var theGame = new Game();
-theGame.start();
+Game.init();
+Game.start();

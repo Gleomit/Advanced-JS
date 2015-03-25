@@ -1,3 +1,5 @@
+var example = null;
+
 String.prototype.startsWith = function startsWith (substring) {
     if(typeof substring === "string") {
         if (substring.length < this.length) {
@@ -97,39 +99,39 @@ String.prototype.repeat = function repeat(count){
     }
 };
 
-var example = "This is an example string used only for demonstration purposes.";
+example = "This is an example string used only for demonstration purposes.";
 console.log(example.startsWith("This"));
 console.log(example.startsWith("this"));
 console.log(example.startsWith("other"));
 
 console.log("\n");
 
-var example = "This is an example string used only for demonstration purposes.";
+example = "This is an example string used only for demonstration purposes.";
 console.log(example.endsWith("poses."));
 console.log(example.endsWith ("example"));
 console.log(example.startsWith("something else"));
 
 console.log("\n");
 
-var example = "This is an example string used only for demonstration purposes.";
+example = "This is an example string used only for demonstration purposes.";
 console.log(example.left(9));
 console.log(example.left(90));
 
 console.log("\n");
 
-var example = "This is an example string used only for demonstration purposes.";
+example = "This is an example string used only for demonstration purposes.";
 console.log(example.right(9));
 console.log(example.right(90));
 
 console.log("\n");
 
 // Combinations must also work
-var example = "abcdefgh";
+example = "abcdefgh";
 console.log(example.left(5).right(2));
 
 console.log("\n");
 
-var hello = "hello";
+hello = "hello";
 console.log(hello.padLeft(5));
 console.log(hello.padLeft(10));
 console.log(hello.padLeft(5, "."));
@@ -138,7 +140,7 @@ console.log(hello.padLeft(2, "."));
 
 console.log("\n");
 
-var hello = "hello";
+hello = "hello";
 console.log(hello.padRight(5));
 console.log(hello.padRight(10));
 console.log(hello.padRight(5, "."));
@@ -147,7 +149,7 @@ console.log(hello.padRight(2, "."));
 
 console.log("\n");
 
-var character = "*";
+character = "*";
 console.log(character.repeat(5));
 // Alternative syntax
 console.log("~".repeat(3));
