@@ -1,23 +1,18 @@
-define(['Factory', 'Section'], function(Factory, Section) {
+define("Container", ['exports', 'Factory', 'Section'], function(exports, Factory, Section) {
 
-    return (function() {
+    (function() {
         var id = 0;
 
         function Container() {
             this._sections = [];
             this._id = id;
-
+            console.log(Factory)
             id += 1;
-            //console.log(Factory);
         }
 
         Container.prototype = {
             addSection: function (section) {
-                if (section instanceof Section) {
-                    this._sections.push(section);
-                } else {
-                    throw new Error("addSection expects Section as parameter.");
-                }
+                this._sections.push(section);
             },
             addToDOM: function (parentElement) {
                 var sectionElement = document.createElement("section");
@@ -39,7 +34,7 @@ define(['Factory', 'Section'], function(Factory, Section) {
 
                 inputButton.onclick = function (){
                     if(document.getElementById(inputField.id).value.trim().length > 0) {
-                        var newSection = Factory.createSection(document.getElementById(inputField.id).value);
+                        var newSection = Factory.Factory.createSection(document.getElementById(inputField.id).value);
                         newSection.addToDOM(sectionsSectionElement);
                         containerThis.addSection(newSection);
                     } else{
@@ -67,6 +62,7 @@ define(['Factory', 'Section'], function(Factory, Section) {
             }
         };
 
+        exports.Container = Container;
         return Container;
     })();
 });

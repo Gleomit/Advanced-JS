@@ -1,5 +1,5 @@
-define(['Factory', 'Item'], function() {
-    return (function() {
+define("Section", ['exports', 'Factory'], function(exports, Factory) {
+    (function() {
         var id = 0;
 
         function Section(title) {
@@ -8,6 +8,7 @@ define(['Factory', 'Item'], function() {
             this._id = id;
 
             id += 1;
+            //console.log(Factory);
         }
 
         Section.prototype.__defineGetter__("title", function () {
@@ -27,11 +28,7 @@ define(['Factory', 'Item'], function() {
         });
 
         Section.prototype.addItem = function (item) {
-            if (item instanceof Item) {
-                this.items.push(item);
-            } else {
-                throw new Error("addItem expects Item as parameter.");
-            }
+            this.items.push(item);
         };
 
         Section.prototype.addToDOM = function (parentElement) {
@@ -60,7 +57,7 @@ define(['Factory', 'Item'], function() {
 
             inputItemAdd.onclick = function () {
                 if(document.getElementById(inputItemField.id).value.trim().length > 0) {
-                    var item = Factory.createItem(document.getElementById(inputItemField.id).value.toString());
+                    var item = Factory.Factory.createItem(document.getElementById(inputItemField.id).value.toString());
 
                     sectionThis.addItem(item);
                     item.addToDOM(document.getElementById(sectionElement.id));
@@ -81,7 +78,7 @@ define(['Factory', 'Item'], function() {
 
             parentElement.appendChild(inputSection);
         };
-
+        exports.Section = Section;
         return Section;
     })();
 });

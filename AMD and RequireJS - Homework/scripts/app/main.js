@@ -1,10 +1,10 @@
 require.config({
-    paths : {
-        app : "app",
-        Factory : "factory",
-        Container : "models/Container",
-        Section : "models/Section",
-        Item : "models/Item"
+    paths: {
+        Factory: "./factory",
+        app: "./app",
+        Item: "./models/Item",
+        Container: "./models/Container",
+        Section: "./models/Section"
     }
 });
 

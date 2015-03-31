@@ -1,17 +1,13 @@
-define(['Container', 'Section', 'Item'], function(Container, Section, Item) {
-
-    return {
+define("Factory", ['exports', 'Container', 'Section', 'Item'], function(exports, Container, Section, Item) {
+    exports.Factory = {
         createContainer: function(title){
-            console.log(Container);
-            var temp = new Container(title);
-
-            return temp;
+            return new Container.Container(title);
         },
         createSection: function(title){
-            return new Section(title);
+            return new Section.Section(title);
         },
         createItem: function(content){
-            return new Item(content);
+            return new Item.Item(content);
         }
     };
 });

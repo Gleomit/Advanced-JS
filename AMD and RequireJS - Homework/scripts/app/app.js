@@ -1,5 +1,9 @@
-define(['Factory'], function(Factory) {
-    console.log(Factory);
-    var mainContainer = Factory.createContainer();
-    mainContainer.addToDOM(document.getElementsByTagName('main')[0]);
+define('app', ['Factory'], function(Factory) {
+
+    //console.log(Factory);
+
+    return ((function(){
+        var mainContainer = Factory.Factory.createContainer();
+        mainContainer.addToDOM(document.getElementsByTagName('main')[0]);
+    })());
 });

@@ -1,5 +1,5 @@
-define([], function() {
-    return (function() {
+define("Item", ['exports'], function(exports) {
+    (function() {
         var id = 0;
 
         function Item(content) {
@@ -74,6 +74,7 @@ define([], function() {
             }
         };
 
+        exports.Item = Item;
         return Item;
     })();
 });
