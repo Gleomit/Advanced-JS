@@ -1,0 +1,55 @@
+main{
+    text-align: center;
+    border: 2px solid #000;
+    padding: 10px;
+    width: 600px;
+    margin: 0 auto;
+}
+
+main>.container{
+    border: 1px solid #000;
+    padding: 10px;
+}
+
+main>.container>h1{
+    margin: 0;
+    font-size: 300%;
+}
+
+.sectionTitle{
+    text-align: right;
+    margin: 5px 20px 20px 0;
+}
+
+.section{
+    padding-bottom: 10px;
+    border: 1px solid #000;
+    margin-top: 10px;
+}
+
+.right{
+    text-align: right;
+    margin-top: 10px;
+}
+
+.itemText{
+    display: inline-block;
+    border-bottom: 1px solid black;
+}
+
+.left{
+    text-align: left;
+}
+
+.itemField{
+    margin-right: 5px;
+}
+
+.sectionField{
+    margin-right: 10px;
+}
+
+.itemText{
+    margin-left: 5px;
+    width: 91.5%;
+}
